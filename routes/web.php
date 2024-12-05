@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\UserCrud;
 use Livewire\Livewire;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +23,17 @@ Route::middleware('web')->group(function (){
 
         Route::view('user',[PageController::class, 'index'])->middleware(['auth', 'verified'])->name('user');
 
+        Route::resource('users', UserController::class);
+
+        Route::resource('bookings', BookingController::class);
+
         Route::view('dashboard', 'dashboard')
             ->name('dashboard');
 
         Route::view('profile', 'profile')
             ->name('profile');
 
-        Route::get('/users', UserCrud::class)->name('users.index');
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
     });
 });
 

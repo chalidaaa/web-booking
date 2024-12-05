@@ -29,7 +29,7 @@
             <main>
                 <div class="container mt-5">    
                     @include('layouts.sidebar')
-                    <div class="p-[50px] mt-5 sm:ml-64">
+                    <div class="w-full p-[50px] mt-5 sm:ml-64">
                         @yield('content')
                     </div>
                 </div>

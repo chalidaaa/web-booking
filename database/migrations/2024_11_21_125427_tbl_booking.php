@@ -14,9 +14,11 @@ return new class extends Migration
         //
         Schema::create('tbl_booking', function (Blueprint $table) {
             $table->id();
-            $table->date('tgl');
-            $table->time('waktu');
             $table->foreignId('user_id')->constrained('users');
+            $table->string('customer_phone');
+            $table->dateTime('booking_datetime');
+            $table->enum('status', ['pending', 'confirmed', 'cancelled', 'done'])->default('pending');
+            $table->longText('note')->nullable();
             $table->timestamps();
         });
     }
