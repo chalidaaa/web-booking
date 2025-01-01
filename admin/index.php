@@ -1,4 +1,10 @@
 <!--  -->
+<?php
+session_start();
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
+    header("Location: ../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -136,7 +142,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-gray-800">DATA Booking</h1>
-                        <!-- <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#modal-add"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Product</button> -->
+                        <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#modal-add"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Booking</button>
                     </div>
                     <!-- Page Heading -->
                     <?php
@@ -177,7 +183,7 @@
                     }
                     ?>
 
-                    <form action="add_product.php" method="post" enctype="multipart/form-data">
+                    <form action="add_booking.php" method="post" enctype="multipart/form-data">
                         <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -191,32 +197,31 @@
 
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input type="text" name="nama" required="required" class="form-control " placeholder="Masukkan Nama Product ..">
+                                            <!-- <input type="text" name="nama" required="required" class="form-control " placeholder="Masukkan Nama Product .."> -->
+                                            <select name="user_id" required="required" class="form-control">
+                                                <option value="">Pilih User</option>
+                                                <?php
+                                                include 'koneksi.php';
+                                                $query = "SELECT id, name FROM users";
+                                                $result = mysqli_query($koneksi, $query);
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                ?>
+                                                    <option value="<?= $row['id']; ?>"><?= $row['name']; ?></option>
+                                                <?php
+                                                    // echo '<option value="' . htmlspecialchars($row['id']) . '">' . htmlspecialchars($row['name']) . '</option>';
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Harga</label>
-                                            <input type="text" name="harga" required="required" class="form-control " placeholder="Masukkan Harga ...">
+                                            <label>Jam Booking</label>
+                                            <input type="datetime-local" name="jam_booking" required="required" class="form-control " placeholder="Masukkan Harga ...">
                                         </div>
                                         <div class="form-group">
-                                            <label>Rating</label>
-                                            <input type="number" name="rating" required="required" class="form-control" placeholder="Masukkan Rating ..">
+                                            <label>Note</label>
+                                            <input type="text" name="note" required="required" class="form-control" placeholder="Masukkan Note (optional) ..">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Deskripsi</label>
-                                            <input type="text" name="deskripsi" required="required" class="form-control" placeholder="Masukkan Deskripsi ..">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Stok</label>
-                                            <input type="number" name="stok" required="required" class="form-control" placeholder="Masukkan Stok ..">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Ukuran</label>
-                                            <input type="text" name="ukuran" required="required" class="form-control" placeholder="Masukkan Ukuran ..">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>FOto</label>
-                                            <input type="file" name="foto" required class="form-control">
-                                        </div>
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -256,6 +261,7 @@
                                         $query = "
                                             SELECT 
                                                 b.id, 
+                                                b.user_id AS id_user,
                                                 u.name AS nama_user, 
                                                 u.no_hp, 
                                                 b.booking_datetime AS jam_booking, 
@@ -291,12 +297,12 @@
                                                 </td>
                                                 <td><?= htmlspecialchars($d['note']); ?></td>
                                                 <td>
-                                                    <!-- <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-edit<?php echo $d['id'] ?>"><i class="fas fa-sm fa-edit text-warning"></i></button> -->
+                                                    <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-edit<?php echo $d['id'] ?>"><i class="fas fa-sm fa-edit text-warning"></i></button>
                                                     <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-hapus<?php echo $d['id'] ?>"><i class="fas fa-trash text-danger"></i></button>
                                                 </td>
                                             </tr>
 
-                                            <!-- <form action="edit_product.php" method="post" enctype="multipart/form-data">
+                                            <form action="edit_booking.php" method="post" enctype="multipart/form-data">
                                                 <div class="modal fade" id="modal-edit<?php echo $d['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
@@ -310,39 +316,48 @@
 
                                                                 <div class="form-group">
                                                                     <label>Nama</label>
-                                                                    <input type="text" name="nama" required="required" class="form-control " placeholder="Masukkan Nama Siswa .." value="<?= $d['nama']; ?>">
-                                                                    <input type="hidden" name="id" required="required" class="form-control " placeholder="Masukkan Nama Siswa .." value="<?= $d['id']; ?>">
+                                                                    <input type="text" name="id" hidden value="<?= $d['id']; ?>" required="required" class="form-control " placeholder="Masukkan Nama Product ..">
+                                                                    <select name="user_id" required="required" class="form-control">
+                                                                        <option value="<?= $d['id_user']; ?>" selected><?= $d['nama_user']; ?></option>
+                                                                        <?php
+                                                                        include 'koneksi.php';
+                                                                        $query = "SELECT id, name FROM users";
+                                                                        $result = mysqli_query($koneksi, $query);
+                                                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                                        ?>
+                                                                            <option value="<?= $row['id']; ?>"><?= $row['name']; ?></option>
+                                                                        <?php
+                                                                            // echo '<option value="' . htmlspecialchars($row['id']) . '">' . htmlspecialchars($row['name']) . '</option>';
+                                                                        }
+                                                                        ?>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label>Harga</label>
-                                                                    <input type="text" name="harga" required="required" class="form-control " placeholder="Masukkan Harga ..." value="<?= $d['harga']; ?>">
+                                                                    <label>Jam Booking</label>
+                                                                    <input type="datetime-local" value="<?= $d['jam_booking']; ?>" name="jam_booking" required="required" class="form-control " placeholder="Masukkan Harga ...">
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label>Rating</label>
-                                                                    <input type="number" name="rating" required="required" class="form-control" placeholder="Masukkan Rating .." value="<?= $d['rating']; ?>">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Deskripsi</label>
-                                                                    <input type="text" name="deskripsi" required="required" class="form-control" placeholder="Masukkan Deskripsi .." value="<?= $d['deskripsi']; ?>">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Stok</label>
-                                                                    <input type="number" name="stok" required="required" class="form-control" placeholder="Masukkan Stok .." value="<?= $d['stok']; ?>">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>Ukuran</label>
-                                                                    <input type="text" name="ukuran" required="required" class="form-control" placeholder="Masukkan Ukuran .." value="<?= $d['ukuran']; ?>">
-                                                                </div>
+                                                                <div class="form-group ">
+                                                                    <label>Status</label>
+                                                                    <select name="status" required="required" class="form-control">
+                                                                        <option value="<?= $d['status']; ?>" selected><?= $d['status']; ?></option>
+                                                                        <option value="pending">Pending</option>
+                                                                        <option value="confirmed">Confirmed</option>
+                                                                        <option value="cancelled">Cancelled</option>
+                                                                    </select>
+                                                                    <div class="form-group">
+                                                                        <label>Note</label>
+                                                                        <input type="text" name="note" value="<?= $d['note']; ?>" required="required" class="form-control" placeholder="Masukkan Rating ..">
+                                                                    </div>
 
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </form> -->
+                                            </form>
 
                                             <div class="modal fade" id="modal-hapus<?php echo $d['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
