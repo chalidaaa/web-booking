@@ -450,13 +450,6 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                         <label for="login-password">Password</label>
                         <input type="password" name="password" id="login-password" placeholder="Enter your password">
 
-                        <!-- <div class="form-options">
-                            <div>
-                                <input type="checkbox" id="rememberMe">
-                                <span>Remember me</span>
-                            </div>
-                            <a href="#">Forgot Password?</a>
-                        </div> -->
 
                         <button type="submit" class="login-btn">Login</button>
                         <!-- <button class="regist-btn">Daftar</button> -->

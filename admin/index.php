@@ -49,7 +49,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item ">
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -63,6 +63,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
                     <i class="fas fa-fw fa-user-alt"></i>
                     <span>User</span></a>
             </li>
+
 
 
             <!-- Divider -->
@@ -101,7 +102,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img src="image/jhn.png" class="img-profile rounded-circle">
+                                <img class="img-profile rounded-circle" src="https://i.pravatar.cc/150?img=3">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -137,9 +138,10 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
 
                     <!-- Modal -->
 
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Data Booking</h1>
+                        <h1 class="h3 mb-2 text-gray-800">DATA Booking</h1>
                         <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#modal-add"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Booking</button>
                     </div>
                     <!-- Page Heading -->
@@ -299,7 +301,23 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
                                                     <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-hapus<?php echo $d['id'] ?>"><i class="fas fa-trash text-danger"></i></button>
                                                 </td>
                                             </tr>
-
+                                            <div class="modal fade" id="modal-hapus<?php echo $d['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Data?</h5>
+                                                            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">Yakin akan menghapus Product ?</div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                                            <a class="btn btn-primary" href="hapus_booking.php?id=<?php echo $d['id'] ?>">Hapus</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <form action="edit_booking.php" method="post" enctype="multipart/form-data">
                                                 <div class="modal fade" id="modal-edit<?php echo $d['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
@@ -357,24 +375,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
                                                     </div>
                                             </form>
 
-                                            <div class="modal fade" id="modal-hapus<?php echo $d['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Data?</h5>
-                                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">Yakin akan menghapus Product ?</div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                            <a class="btn btn-primary" href="hapus_booking.php?id=<?php echo $d['id'] ?>">Hapus</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
+
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -450,5 +451,4 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
 </body>
-
 </html>
