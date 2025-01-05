@@ -65,7 +65,6 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
             </li>
 
 
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -102,7 +101,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <img src="image/jhn.png" class="img-profile rounded-circle">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -138,10 +137,9 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
 
                     <!-- Modal -->
 
-
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">DATA Booking</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Data Booking</h1>
                         <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#modal-add"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Booking</button>
                     </div>
                     <!-- Page Heading -->
@@ -376,6 +374,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -394,7 +393,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; By Domama Team</span>
                     </div>
                 </div>
             </footer>

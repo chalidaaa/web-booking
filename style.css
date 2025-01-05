@@ -15,7 +15,7 @@ header{
 }
 .hero-nav{
     border-radius: 20px;
-    background-image: url('image/abank.png');
+    /* background-image: url('image/bgweb.png'); */
     background-position: center;
     background-size: cover;
     padding: 20px;

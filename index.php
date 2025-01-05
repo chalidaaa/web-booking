@@ -193,23 +193,18 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
     }
     ?>
     <header>
-        <div class="hero-nav">
+        <div class="hero-nav" style="background-image: url('image/bgweb.png')">
             <div class="nav">
-                <!-- <div class="burger-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div> -->
                 <div class="logo">
                     <a href="index.php"><img src="image/logo.png" alt=""></a>
                 </div>
                 <ul class="navmenu">
-                    <li><a href="index.php">ABOUT</a></li>
+                    <li><a href="#aboutme">ABOUT</a></li>
                     <li><a href="#price">PRICES</a></li>
-                    <li><a href="shop.php">TESTIMONIALS</a></li>
-                    <li><a href="about.php">CONTACT US</a></li>
+                    <li><a href="#testimoni">TESTIMONIALS</a></li>
+                    <li><a href="#bagiancontact">CONTACT</a></li>
                 </ul>
-                <div class="auth">
+                <div class="auth" style="display:flex">
                     <?php
                     if (isset($_SESSION['user_id'])) {
                         echo '
@@ -220,8 +215,6 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                             <button id="regist">Daftar</button>';
                     }
                     ?>
-                    <!-- <button id="login">Masuk</button>
-                    <button id="regist">Daftar</button> -->
                 </div>
             </div>
             <div class="hero-desc">
@@ -239,7 +232,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
             </div>
         </div>
     </header>
-    <section class="why-us-section">
+    <section class="why-us-section" id="aboutme">
         <div class="images-container">
             <img src="image/image-3.svg" alt="Model 1" class="image">
             <img src="image/image-4.svg" alt="Model 2" class="image">
@@ -247,12 +240,16 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
         </div>
         <div class="text-container">
             <h2>Why us?<br>What makes BilikFoto so special?</h2>
-            <p>Kenapa produk kolang kaling kami terbaik? Karena kami menghadirkan kolang kaling dalam berbagai bentuk dan rasa yang tak tertandingi. Kolang kaling kami menawarkan kelembutan, rasa alami, dan kenyamanan yang memanjakan lidah. Setiap produk dipilih dari buah terbaik, diproses dengan teknik khusus, dan tanpa bahan pengawet. Hasilnya adalah rangkaian produk kolang kaling yang lezat, sehat, dan eksklusif! Nikmati kualitas premium di setiap gigitan!</p>
+            <p>
+            Di BilikFoto, kami percaya setiap momen layak diabadikan dengan sempurna. Itulah mengapa kami menghadirkan pengalaman yang berbeda: mulai dari teknologi kamera canggih, pencahayaan profesional, hingga desain studio yang stylish dan nyaman. Selain itu, Anda memiliki kendali penuh atas setiap foto yang diambil, menjadikan setiap hasilnya unik dan personal. Dengan suasana yang mendukung kreativitas dan privasi. 
+            BilikFoto lebih dari sekadar studio, kami adalah tempat di mana cerita Anda diabadikan dengan keindahan yang tak tertandingi.
+            </p>
         </div>
     </section>
+
+    <!-- PRICES -->
     <section class="price-list-section">
     <h1 class="title">Price List</h1>
-
     <div id="price" class="price-list-container">
 
         <div class="price-card">
@@ -340,10 +337,12 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
         </div>
     </div>
     </section>
-    <section class="testimonials-section">
+            
+    <!-- TESTIMONI CUYYY -->
+    <div id="testimoni">
+        <section class="testimonials-section">
         <h2>Testimonials</h2>
         <div class="testimonials-container">
-            <button class="arrow left-arrow">←</button>
             <div class="testimonials-carousel">
                 <div class="testimonial">
                     <img src="image/testi1.svg" alt="Testimonial 1">
@@ -361,9 +360,11 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                     <p>Pengalaman yang luar biasa! Tim di BilikFoto Studio sangat profesional dan ramah. Saya merasa sangat nyaman selama sesi foto dan hasilnya luar biasa! Terima kasih BilikFoto! – Aliyah & Mutia</p>
                 </div>
             </div>
-            <button class="arrow right-arrow">→</button>
         </div>
-    </section>
+        </section>
+    </div>
+    
+    <!-- FORM PEMESANAN -->
     <div class="popup-overlay" id="popupForm">
         <div class="popup-content">
             <span class="close-btn" id="closePopup">&times;</span>
@@ -382,14 +383,20 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
             </form>
         </div>
     </div>
-    <section class="contact-section">
-        <h2>Contact Us</h2>
+    
+    <!-- BAGIAN KONTAK CUY -->
+    <section class="contact-section" id="bagiancontact">
+        <h2 style="text-align:center">Contact Us</h2>
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Hubungi Kami</h3>
                 <p>
-                    Kami di sini untuk membantu Anda! Apakah Anda memiliki pertanyaan tentang produk kami,
-                    memerlukan bantuan dengan pesanan, atau ingin berbagi pengalaman berbelanja? Jangan ragu untuk menghubungi kami.
+                    Ada yang ingin ditanyakan atau disampaikan? 
+                    Kami di sini untuk Anda! 
+                    <br>
+                    Mulai dari informasi layanan, panduan pemesanan, hingga cerita seru tentang pengalaman Anda di bilikfoto. Jangan sungkan untuk menghubungi kami. 
+                    <br>
+                    Tim kami siap memberikan solusi terbaik dengan senyuman!                 
                 </p>
                 <ul>
                     <li>📞 +62 877-8324-0504</li>
@@ -407,25 +414,23 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
             </div>
             <div class="contact-map">
                 <!-- Map embed -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63372.853996441474!2d107.56989382635086!3d-6.914097399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7f7373e79c1%3A0x1d87df97bc538674!2sBilikfoto-%20Bandung!5e0!3m2!1sen!2sid!4v1735373392498!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.0502188514292!2d110.3791018743102!3d-7.003369368593513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b1c32fbb1b9%3A0x38e30aff77868931!2sJl.%20Abdulrahman%20Saleh%20No.570%2C%20Manyaran%2C%20Kec.%20Semarang%20Barat%2C%20Kota%20Semarang%2C%20Jawa%20Tengah%2050147!5e0!3m2!1sid!2sid!4v1736080266670!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
         <footer class="contact-footer">
             <div class="footer-left">
-                <h4>bilikFoto.</h4>
-                <p>Email: bilikfoto@gmail.com</p>
+                <h4>bilikfoto.</h4>
+                <p>Email: fotobilik@gmail.com</p>
                 <p>No Handphone: +62 877-8324-0504</p>
             </div>
             <div class="footer-right">
-                <h4>Mulailah Pose Fotomu dengan BilikFoto</h4>
+                <h4>Abadikan Momen Tak Terlupakan Bersama bilikfoto.</h4>
                 <a href="#price">
                     <button class="open-popup-btn">Book Now!</button>
                 </a>
             </div>
         </footer>
     </section>
-
-
 
     <!-- Login Modal -->
     <div class="modal" id="loginModal">
@@ -484,9 +489,6 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
 
                         <label for="register-password">Password</label>
                         <input type="password" name="password" id="register-password" placeholder="Create a password">
-                        <!-- 
-                        <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="confirm-password" placeholder="Confirm your password"> -->
 
                         <button type="submit" class="register-btn">Register</button>
                     </form>
