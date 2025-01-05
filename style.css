@@ -321,6 +321,7 @@ header{
 .price-list-section {
     text-align: center;
     padding: 50px 150px;
+    
 }
 
 .title {
@@ -337,6 +338,7 @@ header{
     border-radius: 20px;
     padding: 50px;
     gap: 20px;
+    
 }
 
 /* Basic Plan */

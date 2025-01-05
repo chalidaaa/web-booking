@@ -26,6 +26,95 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
 
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        .price-list-section {
+            padding: 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .price-list-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .price-card {
+            background-color: #202020;
+            color: #D6F849;
+            padding: 20px;
+            border-radius: 30px;
+            width: 300px;
+            position: relative;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .price-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .price-card .best-seller {
+            top: -10px;
+            left: 10px;
+            float: right;
+            background-color: #D6F849;
+            color: #191919;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            width: 90px;
+            text-align: center;
+        }
+
+        .price-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .price-card p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .price-card ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .price-card ul li {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .book-now-btn {
+            background-color: #D6F849;
+            color: #191919;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            
+        }
+
+        .book-now-btn:hover {
+            background-color:rgb(197, 237, 104);
+        }
+
+    </style>
 </head>
 
 <body>
@@ -152,9 +241,9 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
     </header>
     <section class="why-us-section">
         <div class="images-container">
-            <img src="image/cw1.png" alt="Model 1" class="image">
-            <img src="image/cw2.png" alt="Model 2" class="image">
-            <img src="image/cw3.png" alt="Model 3" class="image">
+            <img src="image/image-3.svg" alt="Model 1" class="image">
+            <img src="image/image-4.svg" alt="Model 2" class="image">
+            <img src="image/image-5.svg" alt="Model 3" class="image">
         </div>
         <div class="text-container">
             <h2>Why us?<br>What makes BilikFoto so special?</h2>
@@ -162,26 +251,29 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
         </div>
     </section>
     <section class="price-list-section">
-        <h1 class="title">Price List</h1>
+    <h1 class="title">Price List</h1>
 
-        <div id="price" class="price-list-container">
-            <!-- Basic Plan -->
-            <div class="basic-plan">
-                <h2>40k <span>/each</span></h2>
-                <h3>Basic</h3>
-                <p>Self photo session</p>
-                <ul>
-                    <li>✔️ 1/2 Persons</li>
-                    <li>✔️ 15 mins photoshoot</li>
-                    <li>✔️ 10 mins photo</li>
-                    <li>✔️ Choose colour &</li>
-                    <li>✔️ All digital photos</li>
-                </ul>
-                <?php
+    <div id="price" class="price-list-container">
+
+        <div class="price-card">
+            <span class="best-seller">Best Seller</span> 
+            <h2>40rb <span>/paket</span></h2>
+            <h3>Packet Basic</h3>
+            <p>Paket basic self photo session</p>
+            <br>
+            <ul>
+                <li>✔️ 1/2 person</li>
+                <li>✔️ 1 extra printed photo</li>
+                <li>✔️ 15 mins photoshot</li>
+                <li>✔️ 10 mins photo selection</li>
+                <li>✔️ Choose colour & frame</li>
+                <li>✔️ All digital photos</li>
+            </ul>
+            <?php
                 if (isset($_SESSION['user_id'])) {
 
                 ?>
-                    <button id="reservasi" class="book-now-btn">Book Now</button>
+                    <button id="reservasi" class="book-now-btn">Booking sekarang</button>
                 <?php
                 } else {
                 ?>
@@ -189,29 +281,64 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                 <?php
                 }
                 ?>
-
-            </div>
-
-            <!-- Divider -->
-            <!-- <div class="divider"></div> -->
-
-            <!-- Additional Info -->
-            <div class="additionals">
-                <h3>Additionals:</h3>
-                <p><strong>25k</strong> / 4 persons max</p>
-                <div class="additional-item">
-                    <img src="image/Frame 2354.png" alt="Group Icon">
-                    <img src="image/Frame 2348.png" alt="Group Icon">
-                    <img src="image/Group 1000002265.png" alt="Printed Photo">
-                    <span>1 extra printed photo</span>
-                </div>
-                <p><strong>15k</strong> / 1 extra printed photo</p>
-                <div class="additional-item">
-                    <img src="image/Frame 2358.png" id="single" alt="Single Photo">
-                    <!-- <img src="image/single-photo-icon.png" alt="Single Photo"> -->
-                </div>
-            </div>
         </div>
+
+        <div class="price-card">
+            <span class="best-seller">Best Seller</span>
+            <h2>55rb <span>/paket</span></h2>
+            <h3>Packet Basic + 
+                <br>Additionals 1</h3>
+            <p>Paket basic self photo session</p>
+            <ul>
+                <li>✔️ 4 persons max</li>
+                <li>✔️ 1 extra printed photo</li>
+                <li>✔️ 15 mins photoshot</li>
+                <li>✔️ 10 mins photo selection</li>
+                <li>✔️ Choose colour & frame</li>
+                <li>✔️ All digital photos</li>
+            </ul>
+            <?php
+                if (isset($_SESSION['user_id'])) {
+
+                ?>
+                    <button id="reservasi" class="book-now-btn">Booking sekarang</button>
+                <?php
+                } else {
+                ?>
+                    <a href="#login"><button class="book-now-btn">Login First</button></a>
+                <?php
+                }
+                ?>
+        </div>
+
+        <div class="price-card">
+            <span class="best-seller">Best Seller</span>
+            <h2>65rb <span>/paket</span></h2>
+            <h3>Packet Basic 
+                <br>+ Additionals 2</h3>
+            <p>Paket basic self photo session</p>
+            <ul>
+                <li>✔️ 4 persons max</li>
+                <li>✔️ 2 extra printed photo</li>
+                <li>✔️ 15 mins photoshot</li>
+                <li>✔️ 10 mins photo selection</li>
+                <li>✔️ Choose colour & frame</li>
+                <li>✔️ All digital photos</li>
+            </ul>
+            <?php
+                if (isset($_SESSION['user_id'])) {
+
+                ?>
+                    <button id="reservasi" class="book-now-btn">Booking sekarang</button>
+                <?php
+                } else {
+                ?>
+                    <a href="#login"><button class="book-now-btn">Login First</button></a>
+                <?php
+                }
+                ?>
+        </div>
+    </div>
     </section>
     <section class="testimonials-section">
         <h2>Testimonials</h2>
@@ -219,19 +346,19 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
             <button class="arrow left-arrow">←</button>
             <div class="testimonials-carousel">
                 <div class="testimonial">
-                    <img src="image/testi1.png" alt="Testimonial 1">
-                    <h3>John Doe</h3>
-                    <p>Pengalaman yang luar biasa! Tim di BilikFoto Studio sangat profesional dan ramah. Saya merasa sangat nyaman selama sesi foto dan hasilnya luar biasa! Terima kasih BilikFoto! – John Doe</p>
+                    <img src="image/testi1.svg" alt="Testimonial 1">
+                    <h3>Winda & Ayu</h3>
+                    <p>Pengalaman yang luar biasa! Tim di BilikFoto Studio sangat profesional dan ramah. Saya merasa sangat nyaman selama sesi foto dan hasilnya luar biasa! Terima kasih BilikFoto! – Winda & Ayu</p>
                 </div>
                 <div class="testimonial">
-                    <img src="image/testi2.png" alt="Testimonial 2">
-                    <h3>John Doe</h3>
-                    <p>Pengalaman yang luar biasa! Tim di BilikFoto Studio sangat profesional dan ramah. Saya merasa sangat nyaman selama sesi foto dan hasilnya luar biasa! Terima kasih BilikFoto! – John Doe</p>
+                    <img src="image/testi2.svg" alt="Testimonial 2">
+                    <h3>Rizal & Citra</h3>
+                    <p>Pengalaman yang luar biasa! Tim di BilikFoto Studio sangat profesional dan ramah. Saya merasa sangat nyaman selama sesi foto dan hasilnya luar biasa! Terima kasih BilikFoto! – Rizal & Citra</p>
                 </div>
                 <div class="testimonial">
-                    <img src="image/testi3.png" alt="Testimonial 3">
-                    <h3>John Doe</h3>
-                    <p>Pengalaman yang luar biasa! Tim di BilikFoto Studio sangat profesional dan ramah. Saya merasa sangat nyaman selama sesi foto dan hasilnya luar biasa! Terima kasih BilikFoto! – John Doe</p>
+                    <img src="image/testi3.svg" alt="Testimonial 3">
+                    <h3>Aliyah & Mutia</h3>
+                    <p>Pengalaman yang luar biasa! Tim di BilikFoto Studio sangat profesional dan ramah. Saya merasa sangat nyaman selama sesi foto dan hasilnya luar biasa! Terima kasih BilikFoto! – Aliyah & Mutia</p>
                 </div>
             </div>
             <button class="arrow right-arrow">→</button>
@@ -265,9 +392,9 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                     memerlukan bantuan dengan pesanan, atau ingin berbagi pengalaman berbelanja? Jangan ragu untuk menghubungi kami.
                 </p>
                 <ul>
-                    <li>📞 no admin bilik foto</li>
-                    <li>📍 alamat bilikfoto</li>
-                    <li>📧 bilikfoto.smg</li>
+                    <li>📞 +62 877-8324-0504</li>
+                    <li>📍 Jl. Abdulrahman Saleh No.570, Manyaran, Kota Semarang</li>
+                    <li>📧 fotobilik@gmail.com</li>
                 </ul>
                 <form class="contact-form">
                     <h4>Send us a message</h4>
@@ -275,10 +402,11 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                     <input type="email" placeholder="Alamat Email">
                     <input type="tel" placeholder="No Handphone">
                     <textarea placeholder="Pesan"></textarea>
-                    <button type="submit">Kirim Pesan</button>
+                    <button type="submit">Send</button>
                 </form>
             </div>
             <div class="contact-map">
+                <!-- Map embed -->
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63372.853996441474!2d107.56989382635086!3d-6.914097399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7f7373e79c1%3A0x1d87df97bc538674!2sBilikfoto-%20Bandung!5e0!3m2!1sen!2sid!4v1735373392498!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
@@ -343,7 +471,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                 </div>
                 <div class="modal-form">
                     <h1>Register</h1>
-                    <p>Create your account to get started</p>
+                    <p>Create your account to get started!</p>
                     <form action="register.php" method="post">
                         <label for="register-email">Nama</label>
                         <input type="text" id="register-email" name="nama" placeholder="Enter your email">
