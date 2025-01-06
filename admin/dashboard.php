@@ -91,7 +91,7 @@ $jumlah_booking = $hasil2->num_rows;
 
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-2 text-gray-800">DASHBOARD</h1>
                     </div>
 
                     <div class="container mt-5">

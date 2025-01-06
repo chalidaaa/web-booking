@@ -149,7 +149,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4><i class="icon fa fa-check"></i> Success</h4>
-                Berhasil Rregister
+                Berhasil Register
             </div>
         <?php
         } elseif ($_GET['alert'] == "gagal_register") {
@@ -274,7 +274,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                 <?php
                 } else {
                 ?>
-                    <a href="#login"><button class="book-now-btn">Login First</button></a>
+                    <a href="#login"><button class="book-now-btn">Sign In First</button></a>
                 <?php
                 }
                 ?>
@@ -302,7 +302,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                 <?php
                 } else {
                 ?>
-                    <a href="#login"><button class="book-now-btn">Login First</button></a>
+                    <a href="#login"><button class="book-now-btn">Sign In First</button></a>
                 <?php
                 }
                 ?>
@@ -330,7 +330,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
                 <?php
                 } else {
                 ?>
-                    <a href="#login"><button class="book-now-btn">Login First</button></a>
+                    <a href="#login"><button class="book-now-btn">Sign In First</button></a>
                 <?php
                 }
                 ?>

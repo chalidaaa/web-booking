@@ -141,7 +141,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] != 'admin') {
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-gray-800">DATA Booking</h1>
+                        <h1 class="h3 mb-2 text-gray-800">DATA BOOKING</h1>
                         <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#modal-add"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Booking</button>
                     </div>
                     <!-- Page Heading -->
